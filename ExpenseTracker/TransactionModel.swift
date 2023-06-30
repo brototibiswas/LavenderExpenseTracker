@@ -21,6 +21,10 @@ struct Transaction: Identifiable {
     let isTransfer: Bool
     let isExpense: Bool
     let isEdited: Bool
+    
+    var dateParsed: Date {
+        date.dateParsed()
+    }
 }
 
 
