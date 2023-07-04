@@ -16,13 +16,14 @@ struct ContentView: View {
                     Text("OverView")
                         .font(.title2)
                         .bold()
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .padding()
                 //make whole screen scrollable
                 .frame(maxWidth: .infinity)
             }
             .background(Color.background)
-            .navigationTitle("Expense Tracker")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 //Notification Bell Icon
