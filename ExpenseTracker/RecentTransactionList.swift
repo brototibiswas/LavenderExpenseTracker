@@ -10,7 +10,7 @@ import SwiftUI
 struct RecentTransactionList: View {
     // transactionListviewModel is set as environment object in main
     @EnvironmentObject var transactionListViewModel: TransactionListViewModel
-    private let maxRecentItems = 5;
+    private let maxRecentItemsToDisplay = 5;
     
     var body: some View {
         VStack {
@@ -38,11 +38,11 @@ struct RecentTransactionList: View {
             // Transaction List: Loop through each transaction row in TransactionListViewModel. pass transaction preview data to transaction row for it to work
             // prefix: returns specified number of elements from list
             // Array(list.enumerated()) -> access both index and element of the list. Closure takes in index and element and use the index to figure out the divider visibility
-            ForEach(Array(transactionListViewModel.transactions.prefix(maxRecentItems).enumerated()), id: \.element) { index, transaction in
+            ForEach(Array(transactionListViewModel.transactions.prefix(maxRecentItemsToDisplay).enumerated()), id: \.element) { index, transaction in
                 TransactionRow(transaction: transaction)
                 
                 // conditionally show Divider() until last-to-second element
-                if index != maxRecentItems - 1 {
+                if index != maxRecentItemsToDisplay - 1 {
                     Divider()
                 }
             }
