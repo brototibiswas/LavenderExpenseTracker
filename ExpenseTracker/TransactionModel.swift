@@ -30,6 +30,15 @@ struct Transaction: Identifiable, Decodable, Hashable {
     var signedAmount: Double {
         return type == TransactionType.credit.rawValue ? amount : -amount
     }
+    
+    var icon: FontAwesomeCode {
+        for category in Category.allCategories {
+            if category.id == categoryId {
+                return category.icon
+            }
+        }
+        return .question
+    }
 }
 
 
@@ -65,7 +74,7 @@ extension Category {
     static let financialCharge = Category(id: 402, name: "Finance Charges", icon: .hand_holding_usd, mainCategoryId: 4)
     static let groceries = Category(id: 501, name: "Groceries", icon: .carrot, mainCategoryId: 5)
     static let restaurants = Category(id: 502, name: "Restaurants", icon: .utensils, mainCategoryId: 5)
-    static let coffeeShops = Category(id: 503, name: "Coffee Shops", icon: .coffee, mainCategoryId: 5)
+    static let coffeeShops = Category(id: 503, name: "Coffee Shop", icon: .coffee, mainCategoryId: 5)
     static let rent = Category(id: 601, name: "Rent", icon: .building, mainCategoryId: 6)
     static let homeSupplies = Category(id: 602, name: "Home Supplies", icon: .couch, mainCategoryId: 6)
     static let paycheque = Category(id: 701, name: "Paycheque", icon: .money_bill, mainCategoryId: 7)

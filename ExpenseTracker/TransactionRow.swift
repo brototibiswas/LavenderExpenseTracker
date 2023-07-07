@@ -21,7 +21,7 @@ struct TransactionRow: View {
                 .fill(Color.icon)
                 .frame(width: 44, height: 44)
                 .overlay {
-                    FontIcon.text(.awesome5Solid(code: .icons), fontsize: 24, color: Color("iconText"))
+                    FontIcon.text(.awesome5Solid(code: transaction.icon), fontsize: 24, color: Color("iconText"))
                 }
             
             VStack(alignment: .leading, spacing: 8) {

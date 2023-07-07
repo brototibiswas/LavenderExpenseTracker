@@ -18,6 +18,9 @@ struct ContentView: View {
                         .bold()
                         .padding()
                         .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    // Recent Transaction View
+                    RecentTransactionList()
                 }
                 .padding()
                 //make whole screen scrollable
@@ -39,8 +42,18 @@ struct ContentView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
+    // RecentTransactionList is a child of ContenView and dependent on environmentObject TransactionListViewModel. So ContentView also needs an instance of TransactionListViewModel
+    static let transactionListViewModel: TransactionListViewModel = {
+        let viewModel = TransactionListViewModel()
+        print(viewModel.transactions)
+        return viewModel
+    }()
+    
     static var previews: some View {
-        ContentView().preferredColorScheme(.light)
-        ContentView().preferredColorScheme(.dark)
+        Group{
+            ContentView()
+            ContentView().preferredColorScheme(.dark)
+        }
+        .environmentObject(transactionListViewModel)
     }
 }
